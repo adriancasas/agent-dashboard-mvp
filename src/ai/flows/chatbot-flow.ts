@@ -3,23 +3,13 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import { agents } from '@/lib/data';
-
-// Define the schema for a single message in the chat history
-export const ChatMessageSchema = z.object({
-  role: z.enum(['user', 'model']),
-  content: z.string(),
-});
-
-// Define the input schema for the chatbot flow
-export const ChatbotInputSchema = z.object({
-  history: z.array(ChatMessageSchema),
-  message: z.string(),
-});
-export type ChatbotInput = z.infer<typeof ChatbotInputSchema>;
-
-// Define the output schema for the chatbot flow
-export const ChatbotOutputSchema = z.string();
-export type ChatbotOutput = z.infer<typeof ChatbotOutputSchema>;
+import {
+  ChatbotInputSchema,
+  ChatbotOutputSchema,
+  ChatMessageSchema,
+  type ChatbotInput,
+  type ChatbotOutput,
+} from './chatbot-types';
 
 // Helper function to create the system prompt
 const buildSystemPrompt = () => {
@@ -78,7 +68,7 @@ const chatbotPrompt = ai.definePrompt({
 });
 
 // Define the Genkit flow
-export const chatbotFlow = ai.defineFlow(
+const chatbotFlow = ai.defineFlow(
   {
     name: 'chatbotFlow',
     inputSchema: ChatbotInputSchema,

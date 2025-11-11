@@ -8,11 +8,10 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
-import { askChatbot, type ChatMessageSchema } from '@/ai/flows/chatbot-flow';
+import { askChatbot } from '@/ai/flows/chatbot-flow';
+import { type ChatMessage } from '@/ai/flows/chatbot-types';
 import { users } from '@/lib/data';
-import type { z } from 'zod';
 
-type ChatMessage = z.infer<typeof ChatMessageSchema>;
 
 export function Chatbot() {
   const [messages, setMessages] = useState<ChatMessage[]>([
