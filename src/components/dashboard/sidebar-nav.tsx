@@ -124,7 +124,7 @@ export function SidebarNav() {
                 <SidebarMenuButton variant="outline" size="sm" className="h-8 justify-center">
                     <PlusCircle className="mr-2 h-4 w-4" />
                     <span>Add Agent</span>
-                </Button>
+                </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
