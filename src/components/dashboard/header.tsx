@@ -6,12 +6,17 @@ import { Button } from '@/components/ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Bell, User, Users, Plus, LogOut } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { notifications as notificationsData } from '@/lib/data';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Separator } from '@/components/ui/separator';
-import type { Project, User as UserType } from '@/lib/types';
+import type { Project, User as UserType, Notification } from '@/lib/types';
 
 const teamMembers: UserType[] = [];
+const notificationsData: Notification[] = [
+    { id: 1, text: "Agent 'Data Miner' has completed its task.", time: "15 minutes ago", read: false },
+    { id: 2, text: "New project 'Q4 Report' created.", time: "1 hour ago", read: false },
+    { id: 3, text: "Agent 'Web Crawler' has low credits.", time: "3 hours ago", read: true },
+];
+
 
 export function Header({ project }: { project: Project | null | undefined }) {
   const auth = useAuth();
