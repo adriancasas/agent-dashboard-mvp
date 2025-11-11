@@ -16,11 +16,19 @@ import Link from 'next/link';
 import { useUser, useFirestore, useCollection, useMemoFirebase } from '@/firebase';
 import { collection, query, where } from 'firebase/firestore';
 import type { Agent, Project, Folder as FolderType } from '@/lib/types';
+import { useEffect, useState } from 'react';
 
 
 export function SidebarNav() {
   const { user } = useUser();
   const firestore = useFirestore();
+
+  const [formattedTotalCredits, setFormattedTotalCredits] = useState('1500');
+
+  useEffect(() => {
+    const totalCredits = 1500;
+    setFormattedTotalCredits(totalCredits.toLocaleString());
+  }, []);
 
   const foldersQuery = useMemoFirebase(() => {
     if (!user) return null;
@@ -45,8 +53,6 @@ export function SidebarNav() {
   const { data: projects, isLoading: isLoadingProjects } = useCollection<Project>(projectsQuery);
   const { data: agents, isLoading: isLoadingAgents } = useCollection<Agent>(agentsQuery);
 
-  const totalCredits = 1500;
-
   return (
     <>
       <SidebarHeader>
@@ -58,7 +64,7 @@ export function SidebarNav() {
         </div>
         <div className="mt-4 rounded-lg bg-muted p-4 text-center">
           <p className="text-sm text-muted-foreground">Total Available Credits</p>
-          <p className="text-2xl font-bold">{totalCredits.toLocaleString()}</p>
+          <p className="text-2xl font-bold">{formattedTotalCredits}</p>
         </div>
       </SidebarHeader>
 
@@ -116,7 +122,7 @@ export function SidebarNav() {
                 <SidebarMenuButton variant="outline" size="sm" className="h-8 justify-center">
                     <PlusCircle className="mr-2 h-4 w-4" />
                     <span>Add Agent</span>
-                </SidebarMenuButton>
+                </Button>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>
