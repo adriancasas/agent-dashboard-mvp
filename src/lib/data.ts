@@ -14,6 +14,7 @@ export const agents: Agent[] = [
   {
     id: 'agent-1',
     name: 'Youtube Optimizator',
+    description: 'Optimizes video titles and descriptions for YouTube SEO.',
     status: 'active',
     credits: 850,
     avatarUrl: findImage('agent1'),
@@ -21,6 +22,7 @@ export const agents: Agent[] = [
   {
     id: 'agent-2',
     name: 'Web Crawler',
+    description: 'Crawls websites to extract specific information.',
     status: 'active',
     credits: 80,
     avatarUrl: findImage('agent2'),
@@ -28,6 +30,7 @@ export const agents: Agent[] = [
   {
     id: 'agent-3',
     name: 'Video Content Strategist',
+    description: 'Analyzes trends to suggest viral video ideas.',
     status: 'inactive',
     credits: 500,
     avatarUrl: findImage('agent3'),
@@ -35,6 +38,7 @@ export const agents: Agent[] = [
   {
     id: 'agent-4',
     name: 'Code Generator',
+    description: 'Generates boilerplate code in multiple languages.',
     status: 'active',
     credits: 1000,
     avatarUrl: findImage('agent4'),
@@ -42,9 +46,34 @@ export const agents: Agent[] = [
   {
     id: 'agent-5',
     name: 'Support Bot',
+    description: 'Provides automated customer support via chat.',
     status: 'active',
     credits: 0,
     avatarUrl: findImage('agent5'),
+  },
+  {
+    id: 'agent-6',
+    name: 'Marketplace Analyzer',
+    description: 'Analyzes marketplace data to find profitable products.',
+    status: 'available',
+    credits: 0,
+    avatarUrl: findImage('agent6'),
+  },
+  {
+    id: 'agent-7',
+    name: 'Image Generator',
+    description: 'Creates stunning visuals from text prompts.',
+    status: 'available',
+    credits: 0,
+    avatarUrl: findImage('agent7'),
+  },
+  {
+    id: 'agent-8',
+    name: 'Social Media Manager',
+    description: 'Schedules and posts content to social media channels.',
+    status: 'available',
+    credits: 0,
+    avatarUrl: findImage('agent8'),
   }
 ];
 

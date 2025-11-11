@@ -1,13 +1,13 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Progress } from "@/components/ui/progress";
-import type { Agent } from "@/lib/data";
-import { MoreVertical } from "lucide-react";
+import type { Agent } from "@/lib/types";
+import { MoreVertical, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export function AgentCard({ agent }: { agent: Agent }) {
+function AssignedAgentCard({ agent }: { agent: Agent }) {
   const isInactive = agent.status === 'inactive';
   const noCredits = agent.credits === 0;
   const lowCredits = agent.credits > 0 && agent.credits < 100;
@@ -64,4 +64,38 @@ export function AgentCard({ agent }: { agent: Agent }) {
       )}
     </Card>
   );
+}
+
+function AvailableAgentCard({ agent }: { agent: Agent }) {
+  return (
+    <Card className="flex flex-col transition-all hover:shadow-lg hover:-translate-y-1 border-2 border-dashed bg-muted/30 hover:border-primary">
+      <CardHeader className="flex flex-row items-start gap-4 space-y-0">
+        <Avatar className="h-12 w-12 border">
+          <AvatarImage src={agent.avatarUrl} alt={agent.name} />
+          <AvatarFallback>{agent.name.charAt(0)}</AvatarFallback>
+        </Avatar>
+        <div className="flex-1">
+          <CardTitle className="text-lg font-bold">{agent.name}</CardTitle>
+          <div className="flex items-center gap-2 text-sm text-accent">
+            <Sparkles className="h-4 w-4" />
+            <span>Ready to get hands on</span>
+          </div>
+        </div>
+      </CardHeader>
+      <CardContent className="flex-1">
+        <CardDescription>{agent.description}</CardDescription>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">Assign & Activate</Button>
+      </CardFooter>
+    </Card>
+  );
+}
+
+
+export function AgentCard({ agent }: { agent: Agent }) {
+  if (agent.status === 'available') {
+    return <AvailableAgentCard agent={agent} />;
+  }
+  return <AssignedAgentCard agent={agent} />;
 }

@@ -1,7 +1,8 @@
 export type Agent = {
     id: string;
     name: string;
-    status: 'active' | 'inactive';
+    description: string;
+    status: 'active' | 'inactive' | 'available';
     credits: number;
     avatarUrl: string;
   };
@@ -31,4 +32,3 @@ export type Agent = {
     time: string;
     read: boolean;
   }
-  

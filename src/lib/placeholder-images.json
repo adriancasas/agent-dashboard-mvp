@@ -59,6 +59,24 @@
       "description": "Avatar for Support Bot",
       "imageUrl": "https://images.unsplash.com/photo-1589254066007-898d52d910d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxmcmllbmRseSUyMHJvYm90fGVufDB8fHx8MTc2Mjg1MDY1OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "friendly robot"
+    },
+    {
+      "id": "agent6",
+      "description": "Avatar for Marketplace Analyzer",
+      "imageUrl": "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmaW5hbmNlJTIwZ3JhcGh8ZW58MHx8fHwxNzYyODUwNjU4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "finance graph"
+    },
+    {
+      "id": "agent7",
+      "description": "Avatar for Image Generator",
+      "imageUrl": "https://images.unsplash.com/photo-1677756119517-756a188d2d94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhcnQlMjBhYnN0cmFjdHxlbnwwfHx8fDE3NjI4NTA2NTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "art abstract"
+    },
+    {
+      "id": "agent8",
+      "description": "Avatar for Social Media Manager",
+      "imageUrl": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzb2NpYWwlMjBtZWRpYXxlbnwwfHx8fDE3NjI4NTA2NTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "social media"
     }
   ]
 }

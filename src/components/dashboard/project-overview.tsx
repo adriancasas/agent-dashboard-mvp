@@ -1,30 +1,33 @@
 import { agents, type Project } from '@/lib/data';
 import { AgentCard } from './agent-card';
-import { Card, CardContent } from '../ui/card';
-import { Button } from '../ui/button';
-import { PlusCircle } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
 
 export function ProjectOverview({ project }: { project: Project }) {
-  const assignedAgents = project.agentIds.map(id => agents.find(a => a.id === id)).filter(Boolean);
+  const assignedAgents = project.agentIds.map(id => agents.find(a => a.id === id)).filter((a): a is NonNullable<typeof a> => a !== undefined && a.status !== 'available');
+  const availableAgents = agents.filter(a => a.status === 'available');
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold tracking-tight">Agent Status</h2>
+        <h2 className="text-2xl font-bold tracking-tight">Active Agents in Project</h2>
         <p className="text-muted-foreground">An overview of agents assigned to "{project.name}"</p>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+          {assignedAgents.map(agent => (
+            <AgentCard key={agent.id} agent={agent} />
+          ))}
+        </div>
       </div>
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {assignedAgents.map(agent => (
-          agent && <AgentCard key={agent.id} agent={agent} />
-        ))}
-         <Card className="flex items-center justify-center border-2 border-dashed bg-muted/50 hover:border-primary hover:bg-muted transition-colors">
-            <CardContent className="p-6 text-center">
-                <Button variant="ghost" className="h-auto flex-col gap-2 p-6">
-                    <PlusCircle className="h-8 w-8 text-muted-foreground" />
-                    <span className="font-semibold text-muted-foreground">Add New Agent</span>
-                </Button>
-            </CardContent>
-         </Card>
+
+      <Separator />
+
+      <div>
+        <h2 className="text-2xl font-bold tracking-tight">Agent Bench</h2>
+        <p className="text-muted-foreground">Available agents ready to be assigned to a project.</p>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+          {availableAgents.map(agent => (
+            <AgentCard key={agent.id} agent={agent} />
+          ))}
+        </div>
       </div>
     </div>
   );
