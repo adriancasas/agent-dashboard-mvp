@@ -168,7 +168,7 @@ export default function ChatPage() {
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
                 placeholder="Escribe tu mensaje..."
-                className="pr-12"
+                className="pr-12 bg-muted"
                 disabled={isLoading}
               />
               <Button
