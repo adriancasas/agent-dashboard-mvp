@@ -30,6 +30,7 @@ export default function ChatPage() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isMounted, setIsMounted] = useState(false);
   const [isAiTyping, setIsAiTyping] = useState(false);
+  const [visibleIcebreakersCount, setVisibleIcebreakersCount] = useState(0);
 
   useEffect(() => {
     setIsMounted(true);
@@ -43,6 +44,8 @@ export default function ChatPage() {
         setTimeout(() => {
             setMessages(prev => [...prev, { id: 'initial-message-3', text: 'Si es así no perdamos el tiempo. ¿Quieres que empecemos con el análisis en profundidad de tu canal? Estoy aquí para guiarte paso a paso en todo el proceso', sender: 'ai' }]);
             setIsAiTyping(false);
+            setTimeout(() => setVisibleIcebreakersCount(1), 500);
+            setTimeout(() => setVisibleIcebreakersCount(2), 1000);
         }, 1500);
       }, 1500);
     }, 1000);
@@ -63,6 +66,7 @@ export default function ChatPage() {
   const handleSend = async (messageText?: string) => {
     const textToSend = messageText || input;
     if (textToSend.trim() && !isLoading) {
+      setVisibleIcebreakersCount(0);
       const userMessage: ChatMessage = { id: Date.now().toString(), text: textToSend, sender: 'user' };
       setMessages(prev => [...prev, userMessage]);
       if (!messageText) {
@@ -178,10 +182,10 @@ export default function ChatPage() {
           </div>
         </div>
 
-        {messages.length === 3 && !isLoading && !isAiTyping && (
+        {visibleIcebreakersCount > 0 && (
           <div className="mt-4">
             <div className="grid grid-cols-2 gap-4">
-              {icebreakers.map((icebreaker) => (
+              {icebreakers.slice(0, visibleIcebreakersCount).map((icebreaker) => (
                 <Card
                   key={icebreaker.title}
                   className="cursor-pointer hover:bg-muted"
