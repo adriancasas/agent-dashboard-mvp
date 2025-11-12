@@ -28,7 +28,7 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 'initial-message',
-      text: 'Hola! Cómo puedo ayudarte?',
+      text: 'Supongo que ya has probado el Youtuber Opt y quieres más potencia',
       sender: 'ai',
     }
   ]);
