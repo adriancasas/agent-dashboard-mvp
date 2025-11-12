@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Send, Bot, User } from 'lucide-react';
+import { ArrowUp, User } from 'lucide-react';
 import { askChatbot } from '@/ai/flows/chatbot-flow';
 import { type ChatMessage } from '@/ai/flows/chatbot-types';
 import { type MessageData } from 'genkit';
@@ -146,9 +146,6 @@ export default function ChatPage() {
               ))}
                {isLoading && (
                 <div className="flex items-start gap-3">
-                  <Avatar className="h-8 w-8">
-                    <AvatarFallback><Bot size={20}/></AvatarFallback>
-                  </Avatar>
                   <div className="max-w-xs rounded-xl p-3 text-sm bg-muted">
                     <p>...</p>
                   </div>
@@ -159,24 +156,25 @@ export default function ChatPage() {
           </ScrollArea>
           
           <div className="border-t p-4 bg-card">
-            <div className="relative">
+            <div className="flex items-center gap-2">
               <Input
                 ref={inputRef}
                 value={input}
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
                 placeholder="Escribe tu mensaje..."
-                className="pr-12 bg-muted"
+                className="flex-1 bg-muted"
                 disabled={isLoading}
               />
               <Button
                 type="submit"
                 size="icon"
-                className="absolute right-1 top-1/2 -translate-y-1/2"
+                variant="ghost"
+                className="rounded-full"
                 onClick={() => handleSend()}
                 disabled={isLoading}
               >
-                <Send className="h-4 w-4" />
+                <ArrowUp className="h-5 w-5" />
                 <span className="sr-only">Enviar</span>
               </Button>
             </div>
